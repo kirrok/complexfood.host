@@ -5,5 +5,9 @@ from . import views
 urlpatterns = [
 	url(r'^$',views.index, name='index'),
 	url(r'^base$',views.base, name='base'),
-
+	url(r'^menu$',views.menu, name='menu'),
+	url(r'^learn_more$',views.learn_more, name='learn_more'),
+	url(r'^questions$',views.questions, name='questions'),
+	url(r'^feedback$',views.feedback, name='feedback'),
+	url(r'^contacts$',views.contacts, name='contacts'),
 ]
