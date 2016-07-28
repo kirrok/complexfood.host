@@ -14,8 +14,8 @@ body {
 }
 #main-content {
     min-height: 600px;
-    martin-left:0;
-    martin-right:0;
+    margin-left:0;
+    margin-right:0;
     parring-left:0;
 }
 .navbar {
