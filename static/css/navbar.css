@@ -1,0 +1,207 @@
+body {
+  padding-top: 20px;
+
+}
+
+.lower-cap {
+    margin-top: 20px;
+    min-height:200px;
+    background-color: #0C8312;
+    color: #fff ;
+    font-size: 25px;
+    width:100%;
+    padding: 0 0 0 0;
+}
+#main-content {
+    min-height: 600px;
+    martin-left:0;
+    martin-right:0;
+    parring-left:0;
+}
+.navbar {
+  margin-bottom: 20px;
+}
+
+.intermediate-header {
+    color: #0C8312;
+    text-align: center;
+    font-weight: 700;
+    font-family: Times;
+}
+.align-center {
+clear: both;
+display: block;
+margin-left:auto;
+margin-right: auto;
+}
+
+.why {
+    font-size:20px;
+    color:#555;
+}
+
+.button-big:hover  {
+    font-size:25px;
+    width:300px;
+    margin-bottom: 20px;
+    text-transform:uppercase;
+    border: 1px solid #ccc;
+    background-color: #0C8312;
+    color:#fff;
+    text-weight:900;
+}
+.button-big{
+    font-size:25px;
+    width:300px;
+    margin-bottom: 20px;
+    text-transform:uppercase;
+    border: 1px solid rgb(119, 188, 82);
+    background-color: #fff;
+    color:#0C8312;
+    text-weight:900;
+
+}
+
+.menu-bar {
+    font-size: 14px;
+    color: #333;
+}
+.food-header {
+    border-bottom: solid 1px rgb(119, 188, 82)
+}
+.set-info .btn-default {
+    border-color: rgb(140, 198, 63);
+}
+.set-info .btn-default:hover {
+    background-color: rgb(140, 198, 63);
+    color: white;
+}
+.basket {
+    background: url(../basket.png) no-repeat 6px center;
+    padding-left:40px;
+    background-color: #fff;
+}
+.set-info .basket: hover{
+    background:  rgb(140, 198, 63) url(../basket.png) no-repeat 6px center;
+    padding-left:40px;
+}
+
+.price span{
+    font-size:23px;
+}
+.price{
+    color: rgb(140, 198, 63);
+    float:right;
+    font-size: 18px;
+}
+
+.choose-bar a{
+    font-size:18px;
+    color: #333;
+    margin-left:40px;
+}
+.detailed-description p {
+    font-size:14px;
+}
+
+.detailed-description span {
+    color:rgb(140, 198, 63);
+    font-size:25px;
+}
+
+.detailed-description .price-list{
+    font-size:20px;
+    color:#333;
+}
+.title {
+    color: rgb(140, 198, 63);
+    font-family: Helvetica;
+    line-height: 40px;
+    font-size:30px;
+    display: block;
+}
+
+.decor {
+    padding-left: 70px;
+    panndin-right: 70px;
+    width: 625px;
+}
+
+.time-container {
+    width:555px;
+    height: 65px;
+    margin-top:40px;
+    margin-bottom: 40px;
+    background-color: rgb(140, 198, 63);
+}
+.time-info {
+    background: url(../clock.png) no-repeat 20px center;
+    color: #fff;
+    height: 65px;
+    padding-left:70px;
+    font-size:12px;
+    padding-top: 23px;
+}
+.price-table{
+    border-top: 1px solid #D0D0D0;
+    border-bottom: 1px solid #D0D0D0;
+    padding-top: 10px;
+    text-family: Arial;
+    margin-bottom:30px;
+}
+.data-input {
+    width:400px;
+    border: 1px solid #ccc;
+    padding-left:15px;
+    vertical-align: middle;
+    padding: 6px 8px;
+    margin-bottom: 20px;
+    height: 52px;
+}
+
+.collapse-menu-btn {
+    font-size:18px;
+    width:150px;
+    margin-left: 80px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius:7px;;
+    background-color: rgb(140, 198, 63);
+    color:#fff;
+}
+.diet {
+    width: 60%;
+    margin-left:65px;
+}
+.diet table {
+    width: 100%;
+}
+.product {
+    width: 60%;
+    display: inline-table;
+
+}
+.calories{
+    width:10%;
+    float:right
+    display: inline-table;
+}
+.pfc {
+    width:30%;
+    text-family:Arial;
+    font-size:17px;
+    text-transform: uppercase;
+    display: inline-table;
+
+}
+.diet tr {
+    border-bottom: 1px dashed #009245;
+}
+.diet p {
+    margin: 5px 0px 5px 0px;
+}
+.day-number {
+    color:rgb(140, 198, 63);
+    text-decoration: underline;
+}
