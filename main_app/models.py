@@ -6,11 +6,7 @@ from django.db import models
 
 
 class set(models.Model):
-	TYPES= (
-		('S','Standart'),
-		('P','Premium'),
-	)
-	kind = models.CharField(max_length=2, choices=TYPES)
+	kind = models.CharField(max_length=10)
 	calories = models.IntegerField()
 	protein = models.IntegerField()
 	carbohydrates = models.IntegerField()
