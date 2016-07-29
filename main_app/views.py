@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from main_app.models import *
 
 def index(request):
 	return render(request, 'index.html')
@@ -9,7 +9,8 @@ def base(request):
 	return render(request, 'base.html')
 
 def menu(request):
-	return render(request, 'menu.html')
+	sets_ = set.objects.all()
+	return render(request, 'menu.html',{'sets': sets_})
 
 def learn_more(request):
 	return render(request, 'learn_more.html')

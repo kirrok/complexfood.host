@@ -77,12 +77,12 @@ margin-right: auto;
     color: white;
 }
 .basket {
-    background: url(../basket.png) no-repeat 6px center;
+    background: url(../images/basket.png) no-repeat 6px center;
     padding-left:40px;
     background-color: #fff;
 }
 .set-info .basket: hover{
-    background:  rgb(140, 198, 63) url(../basket.png) no-repeat 6px center;
+    background:  rgb(140, 198, 63) url(../images/basket.png) no-repeat 6px center;
     padding-left:40px;
 }
 
@@ -204,4 +204,12 @@ margin-right: auto;
 .day-number {
     color:rgb(140, 198, 63);
     text-decoration: underline;
+}
+.menu-header {
+    margin-bottom:25px;
+    margin-left: 70px;
+    color:rgb(140, 198, 63);
+    text-transform: uppercase;
+    font-size:25px;
+    font-family: Bodoni;
 }
