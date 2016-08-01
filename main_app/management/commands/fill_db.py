@@ -24,14 +24,11 @@ def fill_set(number):
                                   'protein and carbohydrates. Suitable for drying step in males ' \
                                   'and maintain / muscle set for girls.'
 
-
-
             set_ = set(kind=kind_, calories=calories_, protein=protein_, fat=fat_, carbohydrates=carbohydrates_, \
                        price=price_, image=image_, first_description_woman=first_description_woman_, \
                        first_description_man=first_description_man_, second_description=second_description_)
-
             set_.save()
-            for x in xrange(0, 7):
+            for x in xrange(1, 8):
                 try:
                     day_ = x
                     protein_ = 'Meat 150g , fish 200g'
@@ -55,12 +52,9 @@ def fill_set(number):
             print(e)
 
 
-
 class Command(BaseCommand):
     help = 'Initialize database'
 
     def handle(self, *args, **options):
         fill_set(8)
         print('FILLED!')
-
-
