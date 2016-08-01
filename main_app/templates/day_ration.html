@@ -1,28 +1,28 @@
 <div class="diet">
-    <h4 class="day-number"><span>1</span> день</h4>
+    <h4 class="day-number"><span>{{ day_ration.id }}</span> день</h4>
     <table>
         <tr>
             <td class="pfc"><p>белки</p></td>
-            <td class="product"><p>Говядина 150г, треска 150г, творог200г</p></td>
-            <td class="calories"><p>850 ккал</p></td>
+            <td class="product"><p>{{ day_ration.protein }}</p></td>
+            <td class="calories"><p>{{ day_ration.pcal }}</p></td>
         </tr>
 
         <tr>
             <td class="pfc"><p>Углеводы</p></td>
-            <td class="product"><p>Гречневая крупа 150г, овсянка 60г.</p></td>
-            <td class="calories"><p>250 ккал</p></td>
+            <td class="product"><p>{{ day_ration.carbohydrates }}.</p></td>
+            <td class="calories"><p>{{ day_ration.ccal }}</p></td>
         </tr>
 
         <tr>
             <td class="pfc"><p>Витамины</p></td>
-            <td class="product"><p>Аппельсин, 2 банана, огурцы, руккола.</p></td>
-            <td class="calories"><p>250ккал</p></td>
+            <td class="product"><p>{{ day_ration.greens }}</p></td>
+            <td class="calories"><p>{{ day_ration.gcal }}</p></td>
         </tr>
 
         <tr>
             <td class="pfc"><p>Прочее</p></td>
-            <td class="product"><p>Изюм 30г, грецеий орех 20г</p></td>
-            <td class="calories"><p>100 ккал</p></td>
+            <td class="product"><p>{{ day_ration.other }}</p></td>
+            <td class="calories"><p>{{ day_ration.ocal }}</p></td>
         </tr>
     </table>
 </div>

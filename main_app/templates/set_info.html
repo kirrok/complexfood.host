@@ -2,152 +2,148 @@
 <!-- MAIN CONTENT -->
 {% block main_content %}
 
-<div class="container">
 
-    <!-- SET INFO -->
+<!-- SET INFO -->
+<div class="set-info container">
 
-    <div class="set-info">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h3 class="food-header">Набор питания {{ set.kind }} - {{ set.calories }} ккал</h3>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-3">
-                    <img src="http://placehold.it/200x200" width="200px" height="200px">
-                </div>
-                <div class="col-md-4">
-                    <div class container>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h4>В среднем в день:</h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                {{ set.protein }} <br>белков
-                            </div>
-                            <div class="col-md-3">
-                                {{ set.fat }} <br>жиров
-                            </div>
-                            <div class="col-md-3">
-                                {{ set.carbohydrates }} <br>углев
-                            </div>
-                            <div class="col-md-3">
-                                {{ set.count_calorie }} <br>ккал
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-6" style="border-right:solid 2px #39B54A;">
-                                <strong>{{ set.first_description_woman }}</strong>
-                            </div>
-
-                            <div class="col-md-6">
-                                <strong>{{ set.first_description_man }}</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <h5 class="text-uppercase text-center"><strong>описание программы:</strong></h5>
-                    <p style="font-size:14px;">{{ set.second_description }}</p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="container detailed-description">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>Программа включает в себя:</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-
-                            <p>
-                                - Рецепты по приготовлению блюд.
-                            </p>
-                            <p> - {{ set.third_description}} </p>
-
-                            <p><img src="/images/info-25.png" style="margin-right:15px;" width="35px">
-                                Бесплатная доставка осуществляется
-                                по воскресеньям c 10.00 до 00.00
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span>Цены</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="container price-list">
-                            <div class="row">
-                                <div class="col-md-1"></div>
-                                <div class="col-md-2">
-                                    Пробный день
-                                </div>
-                                <div class="col-md-2">
-                                    {{ set.price_1 }} рублей
-                                </div>
-                                <div class="col-md-7">
-                                    <a class="btn btn-default" href="#" role="button">Заказать</a>
-                                </div>
-                            </div>
-
-                            <hr>
-
-                            <div class="row">
-                                <div class="col-md-1"></div>
-                                <div class="col-md-2">
-                                    5 дней
-                                </div>
-                                <div class="col-md-2">
-                                    {{ set.price_5 }} рублей
-                                </div>
-                                <div class="col-md-7">
-                                    <a class="btn btn-default" href="#" role="button">Заказать</a>
-                                </div>
-                            </div>
-
-                            <hr>
-
-                            <div class="row">
-                                <div class="col-md-1"></div>
-                                <div class="col-md-2">
-                                    7 дней
-                                </div>
-                                <div class="col-md-2">
-                                    {{ set.price_7 }} рублей
-                                </div>
-                                <div class="col-md-7">
-                                    <a class="btn btn-default" href="#" role="button">Заказать</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="food-header">Набор питания {{ set.kind }} - {{ set.calories }} ккал</h3>
             </div>
         </div>
-        <button type="button" class="collapse-menu-btn" data-toggle="collapse" data-target="#ration">
-            Рацион<span class="glyphicon glyphicon-chevron-down"></span>
-        </button>
 
-        <div id="ration" class="collapse">
-            <div class="container">
-                {% for day_ration in ration %}
-                {% include "day_ration.html" %}
-                {% endfor %}
+        <div class="row">
+            <div class="col-md-3">
+                <img src="http://placehold.it/200x200" width="200px" height="200px">
             </div>
+            <div class="col-md-4">
+                <div class container>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>В среднем в день:</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            {{ set.protein }} <br>белков
+                        </div>
+                        <div class="col-md-3">
+                            {{ set.fat }} <br>жиров
+                        </div>
+                        <div class="col-md-3">
+                            {{ set.carbohydrates }} <br>углев
+                        </div>
+                        <div class="col-md-3">
+                            {{ set.count_calorie }} <br>ккал
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6" style="border-right:solid 2px #39B54A;">
+                            <strong>{{ set.first_description_woman }}</strong>
+                        </div>
+
+                        <div class="col-md-6">
+                            <strong>{{ set.first_description_man }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <h5 class="text-uppercase text-center"><strong>описание программы:</strong></h5>
+                <p style="font-size:14px;">{{ set.second_description }}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="container detailed-description">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Программа включает в себя:</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <p>
+                            - Рецепты по приготовлению блюд.
+                        </p>
+                        <p> - {{ set.third_description}} </p>
+
+                        <p><img src="/images/info-25.png" style="margin-right:15px;" width="35px">
+                            Бесплатная доставка осуществляется
+                            по воскресеньям c 10.00 до 00.00
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>Цены</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container price-list">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-2">
+                                Пробный день
+                            </div>
+                            <div class="col-md-2">
+                                {{ set.price_1 }} рублей
+                            </div>
+                            <div class="col-md-7">
+                                <a class="btn btn-default basket" href="#" role="button">Заказать</a>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-2">
+                                5 дней
+                            </div>
+                            <div class="col-md-2">
+                                {{ set.price_5 }} рублей
+                            </div>
+                            <div class="col-md-7">
+                                <a class="btn btn-default basket" href="#" role="button">Заказать</a>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-2">
+                                7 дней
+                            </div>
+                            <div class="col-md-2">
+                                {{ set.price_7 }} рублей
+                            </div>
+                            <div class="col-md-7">
+                                <a class="btn btn-default basket" href="#" role="button">Заказать</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </div>
+    <button type="button" class="collapse-menu-btn" data-toggle="collapse" data-target="#ration">
+        Рацион<span class="glyphicon glyphicon-chevron-down"></span>
+    </button>
 
+    <div id="ration" class="collapse">
+        <div class="container">
+            {% for day_ration in ration %}
+                {% include "day_ration.html" %}
+            {% endfor %}
+        </div>
+    </div>
 </div>
 
 {% endblock main_content %}
