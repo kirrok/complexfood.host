@@ -6,13 +6,15 @@ from main_app.models import *
 
 
 def fill_set(number):
+    calories_ = 1500
     for x in xrange(0, number):
         try:
             if x < number / 2:
                 kind_ = 'Premium'
             else:
                 kind_ = 'Standart'
-            calories_ = 1500 + x * 500
+            if x == 4:
+                calories_ = 1500
             protein_ = randint(80, 250)
             fat_ = randint(20, 120)
             carbohydrates_ = randint(80, 250)
@@ -23,11 +25,15 @@ def fill_set(number):
             second_description_ = 'Minimal nutrient to calorie balance towards increasing restriction of ' \
                                   'protein and carbohydrates. Suitable for drying step in males ' \
                                   'and maintain / muscle set for girls.'
+            third_description_ = 'Some additions description and services... This description can be very long'
 
             set_ = set(kind=kind_, calories=calories_, protein=protein_, fat=fat_, carbohydrates=carbohydrates_, \
                        price=price_, image=image_, first_description_woman=first_description_woman_, \
-                       first_description_man=first_description_man_, second_description=second_description_)
+                       first_description_man=first_description_man_, second_description=second_description_, third_description=third_description_)
             set_.save()
+
+            calories_ += 500
+
             for x in xrange(1, 8):
                 try:
                     day_ = x

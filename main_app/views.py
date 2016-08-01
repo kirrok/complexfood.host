@@ -16,9 +16,13 @@ def menu(request):
     return render(request, 'menu.html', {'sets': sets_})
 
 
-def set_info(request):
-    ration_ = set.objects.reque
-    return render(request, 'set_info.html')
+def set_info(request, id):
+    set_ = set.objects.get(pk=id)
+    ration_ = set_.ration_set.all()
+    p1 = set_.calculate_price_for(1)
+    p5 = set_.calculate_price_for(5)
+    p7 = set_.calculate_price_for(7)
+    return render(request, 'set_info.html', {'set': set_, 'ration': ration_})
 
 
 def learn_more(request):

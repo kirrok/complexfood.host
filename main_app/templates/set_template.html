@@ -46,10 +46,10 @@
                 <div class="col-md-5">
                     <h5 class="text-uppercase text-center"><strong>описание программы:</strong></h5>
                     <p style="font-size:14px;">{{ set.second_description }}</p>
-                    <a class="btn btn-default" href="{% url 'set_info' + '1' %}" role="button">Подробнее</a>
+                    <a class="btn btn-default" href="set_info{{ set.id }}" role="button">Подробнее</a>
                     <a class="btn btn-default basket" href="#" role="button">Купить</a>
                     <div class="price">
-                        От <span>{{ set.price }}</span> руб в день.
+                        От <span>{{ set.clear_price }}</span> руб в день.
                     </div>
 
                 </div>
