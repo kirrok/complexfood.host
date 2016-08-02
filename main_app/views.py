@@ -61,7 +61,7 @@ def contacts(request):
 
 # Create your views here.
 
-def checkout(request, id_=0, days_=0):
+def checkout(request, id_, days_):
     if request.method == 'POST':
         form = checkout_form(request.POST)
         if form.is_valid():
@@ -71,7 +71,7 @@ def checkout(request, id_=0, days_=0):
         form = checkout_form()
         set_ = set.objects.get(pk=id_)
         price_ = set_.calculate_price_for(int(days_))
-    return render(request, 'decor.html', {'form': form, 'id': id_, 'days': days_, 'set': set_, 'price': price_})
+        return render(request, 'decor.html', {'form': form, 'id': id_, 'days': days_, 'set': set_, 'price': price_})
 
 
 def thanks(request, id_, days_):

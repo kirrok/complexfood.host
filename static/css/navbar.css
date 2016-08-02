@@ -144,6 +144,25 @@ margin-right: auto;
     padding-top: 23px;
     padding-bottom: 23px;
 }
+.contacts {
+    padding-top:25px;
+    width: 70%;
+    align: center;
+}
+.contacts p {
+    color: rgb(85, 85, 85);
+    font-size: 16px;
+    line-height: 27.2px;
+    margin-bottom: 20px;
+}
+.contacts h5 {
+    color: rgb(83, 182, 40);
+    font-weight: 600;
+}
+.contacts h4 {
+    color: rgb(92, 84, 84);
+    font-weight: 600;
+}
 .price-table{
     border-top: 1px solid #D0D0D0;
     border-bottom: 1px solid #D0D0D0;
