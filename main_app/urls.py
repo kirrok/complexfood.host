@@ -8,8 +8,11 @@ urlpatterns = [
     url(r'^menu$', views.menu, name='menu'),
     url(r'^set_info(\d{1})/$', views.set_info, name='set_info'),
     url(r'^learn_more$', views.learn_more, name='learn_more'),
-    url(r'^decor$', views.checkout, name='checkout'),
+    url(r'^decor$', views.to_order, name='to_order'),
     url(r'^questions$', views.questions, name='questions'),
     url(r'^feedback$', views.feedback, name='feedback'),
     url(r'^contacts$', views.contacts, name='contacts'),
+    url(r'^checkout$', views.checkout, name='checkout'),
+    url(r'^thanks', views.thanks, name='thanks'),
+
 ]

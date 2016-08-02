@@ -38,40 +38,25 @@
                         </div>
                     </strong>
                 </div>
-                <!-- ФОРМЫ ВВОДА -->
-                <div class="row">
-                    <div class="col-md-3 col-xs-12">
-                        <p style="padding-top:15px">Фамилия*</p>
+                <!-- ФОРМА ВВОДА -->
+                <form action="{% url 'checkout' %}" method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="row">
+                        <div class="col-md-3 col-xs-12">
+                            <p style="padding-top:15px">{{ field.label }}*</p>
+                        </div>
+                        <div class="col-md-9 col-xs-12">
+                            {{ field }}
+                        </div>
                     </div>
-                    <div class="col-md-9 col-xs-12">
-                        <input id="second_name" value="" placeholder="Фамилия*" type="text"
-                               class="data-input">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <p style="padding-top:15px">Имя*</p>
-                    </div>
-                    <div class="col-md-9">
-                        <input id="first_name" value="" placeholder="Имя*" type="text"
-                               class="data-input">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <p style="padding-top:15px">Номер телефона*</p>
-                    </div>
-                    <div class="col-md-9">
-                        <input id="tel_number" value="" placeholder="Номер телефона*"
-                               type="text"
-                               class="data-input">
-                    </div>
-                </div>
-                <hr>
-                <button type="button" class="btn button-big button-decor align-center">
-                    Оформить заказ
-                </button>
+                    {% endfor %}
+                    <hr>
+                    <button type="submit" class="btn button-big button-decor align-center">
+                        Оформить заказ
+                    </button>
 
+                </form>
             </div>
         </div>
     </div>
