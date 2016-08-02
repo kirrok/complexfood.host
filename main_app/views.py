@@ -21,6 +21,7 @@ def set_info(request, id):
     ration_ = set_.ration_set.all()
     return render(request, 'set_info.html', {'set': set_, 'ration': ration_})
 
+
 def checkout(request):
     return render(request, 'decor.html')
 

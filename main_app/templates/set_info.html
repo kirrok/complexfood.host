@@ -7,55 +7,7 @@
 <div class="set-info container">
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="food-header">Набор питания {{ set.kind }} - {{ set.calories }} ккал</h3>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-3">
-                <img src="http://placehold.it/200x200" width="200px" height="200px">
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class container>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>В среднем в день:</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                            <strong>{{ set.protein }}</strong><br>белков
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                            <strong>{{ set.fat }}</strong><br>жиров
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                            <strong>{{ set.carbohydrates }}</strong><br>углев
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                            <strong>{{ set.count_calorie }}</strong><br>ккал
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-6 col-sm-5 col-xs-12" style="border-right:solid 2px #39B54A;">
-                            <strong>{{ set.first_description_woman }}</strong>
-                        </div>
-
-                        <div class="col-md-6 col-sm-5 col-xs-12">
-                            <strong>{{ set.first_description_man }}</strong>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-5">
-                <h5 class="text-uppercase text-center"><strong>описание программы:</strong></h5>
-                <p style="font-size:14px;">{{ set.second_description }}</p>
-            </div>
-        </div>
+        {% include 'set_template.html' with is_info=True %}
 
         <div class="row">
             <div class="container detailed-description">
@@ -65,7 +17,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
 
                         <p>
                             - Рецепты по приготовлению блюд.
@@ -86,14 +38,13 @@
                 <div class="row">
                     <div class="container price-list">
                         <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 col-sm-2 col-xs-6">
                                 Пробный день
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 col-sm-2 col-xs-6">
                                 {{ set.price_1 }} рублей
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-2 col-sm-2 col-sm-12">
                                 <a class="btn btn-default basket" href="{% url 'checkout' %}" role="button">Заказать</a>
                             </div>
                         </div>
@@ -101,14 +52,13 @@
                         <hr>
 
                         <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 col-sm-2 col-xs-6">
                                 5 дней
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 col-sm-2 col-xs-6">
                                 {{ set.price_5 }} рублей
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-7 col-sm-2 col-sm-12">
                                 <a class="btn btn-default basket" href="{% url 'checkout' %}" role="button">Заказать</a>
                             </div>
                         </div>
@@ -116,14 +66,13 @@
                         <hr>
 
                         <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 col-sm-2 col-xs-6">
                                 7 дней
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 col-sm-2 col-xs-6">
                                 {{ set.price_7 }} рублей
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-7 col-sm-2 col-sm-12">
                                 <a class="btn btn-default basket" href="{% url 'checkout' %}" role="button">Заказать</a>
                             </div>
                         </div>
@@ -139,11 +88,9 @@
     </button>
 
     <div id="ration" class="collapse">
-        <div class="container">
             {% for day_ration in ration %}
             {% include "day_ration.html" %}
             {% endfor %}
-        </div>
     </div>
 </div>
 

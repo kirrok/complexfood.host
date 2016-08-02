@@ -19,9 +19,9 @@ def fill_set(number):
             fat_ = randint(20, 120)
             carbohydrates_ = randint(80, 250)
             price_ = randint(500, 1500)
-            image_ = 'Premium_1.png'
-            first_description_woman_ = 'For woman' + str(x)
-            first_description_man_ = 'For man' + str(x)
+            image_ = '/Premium_1.png'
+            first_description_woman_ = 'some short description content For woman' + str(x)
+            first_description_man_ = 'some  other short description content For man' + str(x)
             second_description_ = 'Minimal nutrient to calorie balance towards increasing restriction of ' \
                                   'protein and carbohydrates. Suitable for drying step in males ' \
                                   'and maintain / muscle set for girls.'
