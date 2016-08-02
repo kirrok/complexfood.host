@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+<!-- MAIN CONTENT -->
+{% block main_content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-xs-12 col-sm-12">
+            <div class="row ">
+                <p class="title text-uppercase ">Оформление заказа</p>
+                <div class="time-container">
+                    <p class="time-info">Оформление заказа займет менее минуты</p>
+                </div>
+            </div>
+            <div class="row pds">
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <h4>Программа</h4>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <h4>Длительность</h4>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4" align="right">
+                    <h4>Стоимость</h4>
+                </div>
+            </div>
+            <div class="row pds price-table">
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <p>Cпортивное питание Стандарт - 1500 ккал</p>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <p>1 день</p>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4" align="right">
+                    <p>800 руб.</з>
+                </div>
+            </div>
+            <!-- ФОРМЫ ВВОДА -->
+            <div class="row">
+                <div class="col-md-3">
+                    <p style="padding-top:15px">Фамилия*</p>
+                </div>
+                <div class="col-md-9">
+                    <input id="second_name" size="40" value="" placeholder="Фамилия*" type="text"
+                           class="data-input">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <p style="padding-top:15px">Имя*</p>
+                </div>
+                <div class="col-md-9">
+                    <input id="first_name" maxlength="450" size="40" value="" placeholder="Имя*" type="text"
+                           class="data-input">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <p style="padding-top:15px">Номер телефона*</p>
+                </div>
+                <div class="col-md-9">
+                    <input id="tel_number" maxlength="450" size="40" value="" placeholder="Номер телефона*" type="text"
+                           class="data-input">
+                </div>
+            </div>
+            <hr>
+            <button type="button" class="btn btn-default why button-big align-center">
+                Оформить заказ
+            </button>
+
+        </div>
+    </div>
+</div>
+{% endblock main_content %}

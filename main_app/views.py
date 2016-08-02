@@ -19,10 +19,10 @@ def menu(request):
 def set_info(request, id):
     set_ = set.objects.get(pk=id)
     ration_ = set_.ration_set.all()
-    p1 = set_.calculate_price_for(1)
-    p5 = set_.calculate_price_for(5)
-    p7 = set_.calculate_price_for(7)
     return render(request, 'set_info.html', {'set': set_, 'ration': ration_})
+
+def checkout(request):
+    return render(request, 'decor.html')
 
 
 def learn_more(request):

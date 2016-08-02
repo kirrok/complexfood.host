@@ -129,14 +129,12 @@ margin-right: auto;
 }
 
 .time-container {
-    width:555px;
-    height: 65px;
     margin-top:40px;
     margin-bottom: 40px;
     background-color: rgb(140, 198, 63);
 }
 .time-info {
-    background: url(../clock.png) no-repeat 20px center;
+    background: url(/images/clock.png) no-repeat 20px center;
     color: #fff;
     height: 65px;
     padding-left:70px;
