@@ -4,68 +4,75 @@
 {% block main_content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-6 col-xs-12 col-sm-12">
-            <div class="row ">
-                <p class="title text-uppercase ">Оформление заказа</p>
-                <div class="time-container">
-                    <p class="time-info">Оформление заказа займет менее минуты</p>
+        <div class="col-md-7 col-xs-12 col-sm-12">
+            <div clas="container">
+                <div class="row ">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <p class="title text-uppercase text-center">Оформление заказа</p>
+                        <div class="time-container">
+                            <p class="time-info">Оформление заказа займет менее минуты</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="row pds">
-                <div class="col-md-4 col-xs-4 col-sm-4">
-                    <h4>Программа</h4>
+                <div class="row pds hidden-xs">
+                    <div class="col-md-4 col-xs-4 col-sm-4">
+                        <h5>Программа</h5>
+                    </div>
+                    <div class="col-md-4 col-xs-4 col-sm-4">
+                        <h5>Длительность</h5>
+                    </div>
+                    <div class="col-md-4 col-xs-4 col-sm-4" align="right">
+                        <h5>Стоимость</h5>
+                    </div>
                 </div>
-                <div class="col-md-4 col-xs-4 col-sm-4">
-                    <h4>Длительность</h4>
+                <div class="row pds price-table">
+                    <strong>
+                        <div class="col-md-4 col-xs-5 col-sm-6">
+                            <p>Стандарт - 1500 ккал</p>
+                        </div>
+                        <div class="col-md-4 col-xs-3 col-sm-3">
+                            <p>1 день</p>
+                        </div>
+                        <div class="col-md-4 col-xs-4 col-sm-3" align="right">
+                            <p>800 руб.</з>
+                        </div>
+                    </strong>
                 </div>
-                <div class="col-md-4 col-xs-4 col-sm-4" align="right">
-                    <h4>Стоимость</h4>
+                <!-- ФОРМЫ ВВОДА -->
+                <div class="row">
+                    <div class="col-md-3 col-xs-12">
+                        <p style="padding-top:15px">Фамилия*</p>
+                    </div>
+                    <div class="col-md-9 col-xs-12">
+                        <input id="second_name" value="" placeholder="Фамилия*" type="text"
+                               class="data-input">
+                    </div>
                 </div>
-            </div>
-            <div class="row pds price-table">
-                <div class="col-md-4 col-xs-4 col-sm-4">
-                    <p>Cпортивное питание Стандарт - 1500 ккал</p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p style="padding-top:15px">Имя*</p>
+                    </div>
+                    <div class="col-md-9">
+                        <input id="first_name" value="" placeholder="Имя*" type="text"
+                               class="data-input">
+                    </div>
                 </div>
-                <div class="col-md-4 col-xs-4 col-sm-4">
-                    <p>1 день</p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p style="padding-top:15px">Номер телефона*</p>
+                    </div>
+                    <div class="col-md-9">
+                        <input id="tel_number" value="" placeholder="Номер телефона*"
+                               type="text"
+                               class="data-input">
+                    </div>
                 </div>
-                <div class="col-md-4 col-xs-4 col-sm-4" align="right">
-                    <p>800 руб.</з>
-                </div>
-            </div>
-            <!-- ФОРМЫ ВВОДА -->
-            <div class="row">
-                <div class="col-md-3">
-                    <p style="padding-top:15px">Фамилия*</p>
-                </div>
-                <div class="col-md-9">
-                    <input id="second_name" size="40" value="" placeholder="Фамилия*" type="text"
-                           class="data-input">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p style="padding-top:15px">Имя*</p>
-                </div>
-                <div class="col-md-9">
-                    <input id="first_name" maxlength="450" size="40" value="" placeholder="Имя*" type="text"
-                           class="data-input">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p style="padding-top:15px">Номер телефона*</p>
-                </div>
-                <div class="col-md-9">
-                    <input id="tel_number" maxlength="450" size="40" value="" placeholder="Номер телефона*" type="text"
-                           class="data-input">
-                </div>
-            </div>
-            <hr>
-            <button type="button" class="btn btn-default why button-big align-center">
-                Оформить заказ
-            </button>
+                <hr>
+                <button type="button" class="btn button-big button-decor align-center">
+                    Оформить заказ
+                </button>
 
+            </div>
         </div>
     </div>
 </div>
