@@ -12,7 +12,8 @@ urlpatterns = [
     url(r'^questions$', views.questions, name='questions'),
     url(r'^feedback$', views.feedback, name='feedback'),
     url(r'^contacts$', views.contacts, name='contacts'),
+    url(r'^checkout(\d{1})(\d{1})$', views.checkout, name='checkout'),
     url(r'^checkout$', views.checkout, name='checkout'),
-    url(r'^thanks', views.thanks, name='thanks'),
+    url(r'^thanks(\d{1})(\d{1})$', views.thanks, name='thanks'),
 
 ]

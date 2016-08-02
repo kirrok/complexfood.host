@@ -28,18 +28,24 @@
                 <div class="row pds price-table">
                     <strong>
                         <div class="col-md-4 col-xs-5 col-sm-6">
-                            <p>Стандарт - 1500 ккал</p>
+                            <p>{{set.kind}} - {{set.calories}} ккал</p>
                         </div>
                         <div class="col-md-4 col-xs-3 col-sm-3">
-                            <p>1 день</p>
+                            <p>{{ days }}
+                                {% if days == 1%}
+                                день
+                                {% else %}
+                                дней
+                                {% endif %}
+                            </p>
                         </div>
                         <div class="col-md-4 col-xs-4 col-sm-3" align="right">
-                            <p>800 руб.</з>
+                            <p>{{price}} руб.</з>
                         </div>
                     </strong>
                 </div>
                 <!-- ФОРМА ВВОДА -->
-                <form action="{% url 'checkout' %}" method="post">
+                <form action="{% url 'checkout' %}{{id}}{{days}}" method="post">
                     {% csrf_token %}
                     {% for field in form %}
                     <div class="row">

@@ -45,7 +45,7 @@
                                 {{ set.price_1 }} рублей
                             </div>
                             <div class="col-md-2 col-sm-2 col-sm-12">
-                                <a class="btn btn-default basket" href="{% url 'checkout' %}" role="button">Заказать</a>
+                                <a class="btn btn-default basket" href="{% url 'checkout' %}{{set.id}}1" role="button">Заказать</a>
                             </div>
                         </div>
 
@@ -59,7 +59,7 @@
                                 {{ set.price_5 }} рублей
                             </div>
                             <div class="col-md-7 col-sm-2 col-sm-12">
-                                <a class="btn btn-default basket" href="{% url 'to_order' %}" role="button">Заказать</a>
+                                <a class="btn btn-default basket" href="{% url 'checkout' %}{{set.id}}5" role="button">Заказать</a>
                             </div>
                         </div>
 
@@ -73,7 +73,7 @@
                                 {{ set.price_7 }} рублей
                             </div>
                             <div class="col-md-7 col-sm-2 col-sm-12">
-                                <a class="btn btn-default basket" href="{% url 'to_order' %}" role="button">Заказать</a>
+                                <a class="btn btn-default basket" href="{% url 'checkout' %}{{set.id}}7" role="button">Заказать</a>
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
         </div>
     </div>
     <button type="button" class="collapse-menu-btn" data-toggle="collapse" data-target="#ration">
-        Рацион<span class="glyphicon glyphicon-chevron-down"></span>
+        Рацион  <span style="padding-top:3px;" class="glyphicon glyphicon-chevron-down"></span>
     </button>
 
     <div id="ration" class="collapse">

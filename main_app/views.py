@@ -20,7 +20,6 @@ class checkout_form(forms.Form):
             self.fields[field].widget.attrs.update({'class': 'data-input'})
 
 
-
 def index(request):
     return render(request, 'index.html')
 
@@ -48,10 +47,6 @@ def learn_more(request):
     return render(request, 'learn_more.html')
 
 
-def checkout(request):
-    return render(request, 'checkout.html')
-
-
 def questions(request):
     return render(request, 'questions.html')
 
@@ -66,24 +61,19 @@ def contacts(request):
 
 # Create your views here.
 
-def checkout(request):
-    # if this is a POST request we need to process the form data
+def checkout(request, id_=0, days_=0):
     if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
         form = checkout_form(request.POST)
-        # check whether it's valid:
         if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            return HttpResponseRedirect('thanks')
+            return HttpResponseRedirect('thanks' + str(id_) + str(days_))
 
-    # if a GET (or any other method) we'll create a blank form
     else:
         form = checkout_form()
+        set_ = set.objects.get(pk=id_)
+        price_ = set_.calculate_price_for(int(days_))
+    return render(request, 'decor.html', {'form': form, 'id': id_, 'days': days_, 'set': set_, 'price': price_})
 
-    return render(request, 'decor.html', {'form': form})
 
-
-def thanks(request):
-    return render(request, 'thanks.html')
+def thanks(request, id_, days_):
+    set_ = set.objects.get(pk=id_)
+    return render(request, 'thanks.html', {'set': set_, 'days': days_})
