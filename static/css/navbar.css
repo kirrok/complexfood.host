@@ -142,7 +142,7 @@ margin-right: auto;
 }
 .compressed {
     padding-top:25px;
-    width: 70%;
+    width:90%;
     align: center;
 }
 .compressed p {
@@ -151,13 +151,11 @@ margin-right: auto;
     line-height: 27.2px;
     margin-bottom: 20px;
 }
-
-.question-header {
-     color: #53B628;
-    font-size: 26px;
-    font-family: Helvetica,Arial,sans-serif;
-    margin-bottom: 60px;
+.compressed a {
+    color: rgb(92, 84, 84);
 }
+
+
 .compressed h5 {
     color: rgb(83, 182, 40);
     font-weight: 600;
@@ -166,6 +164,19 @@ margin-right: auto;
     color: rgb(92, 84, 84);
     font-weight: 600;
 }
+.compressed h3 {
+    color: rgb(92, 84, 84);
+    font-weight: 600;
+
+}
+.compressed h2 {
+    color: rgb(83, 182, 40);
+    text-transform: uppercase;
+    font-family: "PT Sans", Times, serif;
+    font-weight: 600;
+    margin-bottom: 60px;
+}
+
 .price-table{
     border-top: 1px solid #D0D0D0;
     border-bottom: 1px solid #D0D0D0;

@@ -78,8 +78,8 @@ def learn_more(request):
     return render(request, 'learn_more.html')
 
 
-def questions(request):
-    return render(request, 'questions.html')
+def faq(request):
+    return render(request, 'faq.html')
 
 
 def feedback(request):
