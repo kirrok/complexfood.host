@@ -140,22 +140,29 @@ margin-right: auto;
     padding-top: 23px;
     padding-bottom: 23px;
 }
-.contacts {
+.compressed {
     padding-top:25px;
     width: 70%;
     align: center;
 }
-.contacts p {
+.compressed p {
     color: rgb(85, 85, 85);
     font-size: 16px;
     line-height: 27.2px;
     margin-bottom: 20px;
 }
-.contacts h5 {
+
+.question-header {
+     color: #53B628;
+    font-size: 26px;
+    font-family: Helvetica,Arial,sans-serif;
+    margin-bottom: 60px;
+}
+.compressed h5 {
     color: rgb(83, 182, 40);
     font-weight: 600;
 }
-.contacts h4 {
+.compressed h4 {
     color: rgb(92, 84, 84);
     font-weight: 600;
 }
@@ -174,6 +181,29 @@ margin-right: auto;
     height: 52px;
     width: 100%;
 }
+.text_area {
+    border: 1px solid #ccc;
+    vertical-align: middle;
+    padding: 6px 8px;
+    width: 100%;
+
+}
+
+.contacts-button:hover {
+    font-weight:600;
+    background-color: #444;
+    color: white;
+
+}
+
+.contacts-button {
+    font-weight:600;
+    background-color:rgb(140, 198, 63);
+    color: white;
+    font-size:17px;
+
+}
+
 
 .collapse-menu-btn {
     font-size:18px;

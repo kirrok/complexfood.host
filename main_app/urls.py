@@ -15,5 +15,6 @@ urlpatterns = [
     url(r'^checkout(\d{1})(\d{1})$', views.checkout, name='checkout'),
     url(r'^checkout$', views.checkout, name='checkout'),
     url(r'^thanks(\d{1})(\d{1})$', views.thanks, name='thanks'),
+    url(r'^thanks_feedback$', views.thanks, name='thanks_feedback'),
 
 ]
