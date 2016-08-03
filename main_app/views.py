@@ -41,7 +41,7 @@ class feedback_form(forms.Form):
     first_name = forms.CharField(label='Имя*', max_length=100)
     email = forms.EmailField(label='Email*', max_length=50)
     topic = forms.CharField(required=False, label='Тема', max_length=100)
-    letter = forms.CharField(widget=forms.Textarea, label='Сообщение')
+    letter = forms.CharField(widget=forms.Textarea, label='Сообщение*')
 
     def __init__(self, *args, **kwargs):
         super(feedback_form, self).__init__(*args, **kwargs)

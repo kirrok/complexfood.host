@@ -1,32 +1,31 @@
-{% extends 'base.html' %}
-{% block main_content %}
+{% extends 'compressed_content.html' %}
+{% block content %}
 
-<div class="container compressed">
-    <h2>написать письмо</h2>
-    <p> Нам важно ваше мнение о сервисе.</p>
-    <p> Просто напишите нам письмо.</p>
-    <p> Ни одно письмо не останется без внимания.</p>
+<h2>написать письмо</h2>
+<p> Нам важно ваше мнение о сервисе.</p>
+<p> Просто напишите нам письмо.</p>
+<p> Ни одно письмо не останется без внимания.</p>
 
-    <form action="{% url 'feedback' %}" method="post" style="margin-top:60px;">
-        {% csrf_token %}
-        {% for field in form %}
-        <div class="row">
-            <div class="col-md-3 col-xs-12">
-                <p style="padding-top:15px">{{ field.label }}</p>
-            </div>
-            <div class="col-md-9 col-xs-12">
-                {{ field }}
-            </div>
+<form action="{% url 'feedback' %}" method="post" style="margin-top:30px;">
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <p>{{ field.label }}</p>
         </div>
-        {% endfor %}
-        <hr color="red" size="10">
-        <button type="submit" class="btn contacts-button">
-            Отправить
-        </button>
+    </div>
+    <div class="row">
+        <div class="col-md-9 col-xs-12">
+            {{ field }}
+        </div>
+    </div>
+    {% endfor %}
+    <hr color="red" size="10">
+    <button type="submit" class="btn contacts-button">
+        Отправить
+    </button>
 
-    </form>
-
-</div>
+</form>
 
 
-{% endblock main_content %}
+{% endblock content %}

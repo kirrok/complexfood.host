@@ -142,14 +142,15 @@ margin-right: auto;
 }
 .compressed {
     padding-top:25px;
-    width:90%;
     align: center;
 }
+
+
 .compressed p {
     color: rgb(85, 85, 85);
     font-size: 16px;
     line-height: 27.2px;
-    margin-bottom: 20px;
+    margin-bottom:5px;
 }
 .compressed a {
     color: rgb(92, 84, 84);
@@ -187,24 +188,31 @@ margin-right: auto;
 .data-input {
     border: 1px solid #ccc;
     vertical-align: middle;
-    padding: 6px 8px;
+    padding: 8px 8px;
     margin-bottom: 20px;
     height: 52px;
     width: 100%;
+    font-size: 18px;
 }
+
 .text_area {
     border: 1px solid #ccc;
     vertical-align: middle;
-    padding: 6px 8px;
     width: 100%;
-
+    padding: 8px 8px;
+    font-size: 18px;
+}
+.compressed .data-input{
+    margin-left: -20px;
+}
+.compressed .text_area{
+    margin-left: -20px;
 }
 
 .contacts-button:hover {
     font-weight:600;
     background-color: #444;
     color: white;
-
 }
 
 .contacts-button {
