@@ -13,9 +13,9 @@ class checkout_form(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(checkout_form, self).__init__(*args, **kwargs)
-        self.fields['first_name'].widget.attrs.update({'placeholder': 'Имя'})
-        self.fields['second_name'].widget.attrs.update({'placeholder': 'Фамилия'})
-        self.fields['phone'].widget.attrs.update({'placeholder': '+7'})
+        self.fields['first_name'].widget.attrs.update({'placeholder': 'Имя', 'required':""})
+        self.fields['second_name'].widget.attrs.update({'placeholder': 'Фамилия', 'required':""})
+        self.fields['phone'].widget.attrs.update({'placeholder': '+7', 'required': ""})
         for field in self.fields:
             self.fields[field].widget.attrs.update({'class': 'data-input'})
 
