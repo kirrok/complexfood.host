@@ -5,6 +5,23 @@ from django.db import models
 
 # Create your models here.
 
+class order(models.Model):
+    first_name = models.CharField(null=True, blank=True, max_length=50, default='somename')
+    second_name = models.CharField(blank=True, null=True, max_length=50, default='somesecondname')
+    phone = models.CharField(blank=True, null=True, max_length=20, default='somephonenu')
+    email = models.EmailField(blank=True, null=True, default='example@email.com')
+    street = models.CharField(blank=True, null=True, max_length=60, default='somestreet')
+    house = models.IntegerField(blank=True, null=True, default='0')
+    housing = models.IntegerField(blank=True, null=True, default='0')
+    building = models.IntegerField(blank=True, null=True, default='0')
+    entrance = models.IntegerField(blank=True, null=True, default='0')
+    floor = models.IntegerField(blank=True, null=True, default='0')
+    room = models.CharField(blank=True, max_length=4, null=True, default='someroo,')
+
+    def summary(self):
+        sum = self.first_name + ' ' + self.second_name
+        return str(7777)
+
 
 class set(models.Model):
     kind = models.CharField(max_length=20)
@@ -43,7 +60,7 @@ class set(models.Model):
         return self.calculate_price_for(1)
 
     def clear_price(self):
-        return self.calculate_price_for(7)/7 + 100 - self.calculate_price_for(7)/7 % 100
+        return self.calculate_price_for(7) / 7 + 100 - self.calculate_price_for(7) / 7 % 100
 
 
 class ration(models.Model):

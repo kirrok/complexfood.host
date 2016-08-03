@@ -7,17 +7,17 @@ from django import forms
 
 
 class checkout_form(forms.Form):
-    first_name = forms.CharField(label='Имя*', max_length=100)
-    second_name = forms.CharField(label='Фамилия*', max_length=100)
+    first_name = forms.CharField(label='Имя*', max_length=50)
+    second_name = forms.CharField(label='Фамилия*', max_length=50)
     phone = forms.CharField(label='Телефон*', max_length=20)
-    email = forms.EmailField(label='Email', max_length=50)
-    street = forms.CharField(label='Улица*', max_length=100)
-    house = forms.CharField(label='Дом*', max_length=12)
-    housing = forms.CharField(required=False, label='Корпус', max_length=12)
-    building = forms.CharField(required=False, label='Строение', max_length=12)
-    entrance = forms.CharField(label='Подъезд*', max_length=12)
-    floor = forms.CharField(label='Этаж*', max_length=12)
-    room = forms.CharField(label='Квартира/Офис*', max_length=12)
+    email = forms.EmailField(label='Email')
+    street = forms.CharField(label='Улица*', max_length=60)
+    house = forms.CharField(label='Дом*', max_length=3)
+    housing = forms.CharField(required=False, label='Корпус', max_length=3)
+    building = forms.CharField(required=False, label='Строение', max_length=3)
+    entrance = forms.CharField(label='Подъезд*', max_length=2)
+    floor = forms.CharField(label='Этаж*', max_length=2)
+    room = forms.CharField(label='Квартира/Офис*', max_length=4)
 
     def __init__(self, *args, **kwargs):
         super(checkout_form, self).__init__(*args, **kwargs)
@@ -103,6 +103,19 @@ def checkout(request, id_, days_):
     if request.method == 'POST':
         form = checkout_form(request.POST)
         if form.is_valid():
+            fname = form.cleaned_data['first_name']
+            sname = form.cleaned_data['second_name']
+            phone = form.cleaned_data['phone']
+            email = form.cleaned_data['email']
+            street = form.cleaned_data['street']
+            house = form.cleaned_data['house']
+            housing = form.cleaned_data['housing']
+            building = form.cleaned_data['building']
+            entrance = form.cleaned_data['entrance']
+            floor = form.cleaned_data['floor']
+            room = form.cleaned_data['room']
+
+        
             return HttpResponseRedirect('thanks' + str(id_) + str(days_))
 
     else:
@@ -110,6 +123,11 @@ def checkout(request, id_, days_):
         set_ = set.objects.get(pk=id_)
         price_ = set_.calculate_price_for(int(days_))
         return render(request, 'order.html', {'form': form, 'id': id_, 'days': days_, 'set': set_, 'price': price_})
+
+
+def backend_orders(request):
+    orders = order.objects.all()
+    return render(request, 'backend_orders.html', {'orders': orders})
 
 
 def thanks(request, id_=-1, days_=-1):

@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block main_content %}
+
+    {% for order in orders %}
+        {{ order.summary }}
+    {% endfor %}
+
+{% endblock main_content %}
