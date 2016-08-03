@@ -16,13 +16,13 @@
                 </div>
                 <div class="row pds hidden-xs">
                     <div class="col-md-4 col-xs-4 col-sm-4">
-                        <h5>Программа</h5>
+                        <h4 >Программа</h4>
                     </div>
                     <div class="col-md-4 col-xs-4 col-sm-4">
-                        <h5>Длительность</h5>
+                        <h4>Длительность</h4>
                     </div>
                     <div class="col-md-4 col-xs-4 col-sm-4" align="right">
-                        <h5>Стоимость</h5>
+                        <h4>Стоимость</h4>
                     </div>
                 </div>
                 <div class="row pds price-table">
@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-md-4 col-xs-3 col-sm-3">
                             <p>{{ days }}
-                                {% if days == 1%}
+                                {% if days == '1' %}
                                 день
                                 {% else %}
                                 дней
@@ -50,7 +50,7 @@
                     {% for field in form %}
                     <div class="row">
                         <div class="col-md-3 col-xs-12">
-                            <p style="padding-top:15px">{{ field.label }}*</p>
+                            <p style="padding-top:15px">{{ field.label }}</p>
                         </div>
                         <div class="col-md-9 col-xs-12">
                             {{ field }}
