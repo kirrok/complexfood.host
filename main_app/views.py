@@ -6,45 +6,42 @@ from django.http import HttpResponseRedirect
 from django import forms
 
 
-class checkout_form(forms.Form):
-    first_name = forms.CharField(label='Имя*', max_length=50)
-    second_name = forms.CharField(label='Фамилия*', max_length=50)
-    phone = forms.CharField(label='Телефон*', max_length=20)
-    email = forms.EmailField(label='Email')
-    street = forms.CharField(label='Улица*', max_length=60)
-    house = forms.CharField(label='Дом*', max_length=3)
-    housing = forms.CharField(required=False, label='Корпус', max_length=3)
-    building = forms.CharField(required=False, label='Строение', max_length=3)
-    entrance = forms.CharField(label='Подъезд*', max_length=2)
-    floor = forms.CharField(label='Этаж*', max_length=2)
-    room = forms.CharField(label='Квартира/Офис*', max_length=4)
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = OrderModel
+        fields = '__all__'
+        widgets = {
+            'house': forms.widgets.TextInput,
+            'housing': forms.widgets.TextInput,
+            'building': forms.widgets.TextInput,
+            'entrance': forms.widgets.TextInput,
+            'floor': forms.widgets.TextInput,
+            'room': forms.widgets.TextInput,
+        }
+        exclude = ['product_id', 'price', 'duration']
 
     def __init__(self, *args, **kwargs):
-        super(checkout_form, self).__init__(*args, **kwargs)
-        self.fields['first_name'].widget.attrs.update({'placeholder': 'Имя', 'required': ""})
-        self.fields['second_name'].widget.attrs.update({'placeholder': 'Фамилия', 'required': ""})
-        self.fields['phone'].widget.attrs.update({'placeholder': '+7', 'required': ""})
-        self.fields['street'].widget.attrs.update({'placeholder': 'Улица*', 'required': ""})
-        self.fields['house'].widget.attrs.update({'placeholder': 'Дом', 'required': ""})
-        self.fields['housing'].widget.attrs.update({'placeholder': 'Корп.'})
-        self.fields['building'].widget.attrs.update({'placeholder': 'Стр.'})
-        self.fields['entrance'].widget.attrs.update({'placeholder': 'Подъезд', 'required': ""})
-        self.fields['floor'].widget.attrs.update({'placeholder': 'Этаж', 'required': ""})
-        self.fields['room'].widget.attrs.update({'placeholder': 'Квартира', 'required': ""})
-        self.fields['email'].widget.attrs.update({'placeholder': 'example@email.com', 'required': ""})
-
+        super(OrderForm, self).__init__(*args, **kwargs)
+        placeholders = ['Имя', 'Фамилия', 'Телефон', 'example@email.com', 'Улица', 'Дом', 'Корпус', 'Строение',
+                        'Подъезд', 'Этаж', 'Квартира', 'Номер набора', 'Цена']
+        x = 0
         for field in self.fields:
-            self.fields[field].widget.attrs.update({'class': 'data-input'})
+            if field != 'housing' and field != 'building':
+                self.fields[field].widget.attrs.update(
+                    {'class': 'data-input', 'required': "", 'placeholder': placeholders[x]})
+            else:
+                self.fields[field].widget.attrs.update({'class': 'data-input', 'placeholder': placeholders[x]})
+            x += 1
 
 
-class feedback_form(forms.Form):
+class FeedbackForm(forms.Form):
     first_name = forms.CharField(label='Имя*', max_length=100)
     email = forms.EmailField(label='Email*', max_length=50)
     topic = forms.CharField(required=False, label='Тема', max_length=100)
     letter = forms.CharField(widget=forms.Textarea, label='Сообщение*')
 
     def __init__(self, *args, **kwargs):
-        super(feedback_form, self).__init__(*args, **kwargs)
+        super(FeedbackForm, self).__init__(*args, **kwargs)
         self.fields['first_name'].widget.attrs.update({'class': 'data-input', 'required': ""})
         self.fields['email'].widget.attrs.update({'class': 'data-input', 'required': ""})
         self.fields['topic'].widget.attrs.update({'class': 'data-input'})
@@ -60,18 +57,14 @@ def base(request):
 
 
 def menu(request):
-    sets_ = set.objects.all()
+    sets_ = SetModel.objects.all()
     return render(request, 'menu.html', {'sets': sets_})
 
 
 def set_info(request, id):
-    set_ = set.objects.get(pk=id)
-    ration_ = set_.ration_set.all()
+    set_ = SetModel.objects.get(pk=id)
+    ration_ = set_.ration.all()
     return render(request, 'set_info.html', {'set': set_, 'ration': ration_})
-
-
-def to_order(request):
-    return render(request, 'order.html')
 
 
 def learn_more(request):
@@ -84,12 +77,12 @@ def faq(request):
 
 def feedback(request):
     if request.method == 'POST':
-        form = feedback_form(request.POST)
+        form = FeedbackForm(request.POST)
         if form.is_valid():
             return HttpResponseRedirect('thanks_feedback')
 
     else:
-        form = feedback_form()
+        form = FeedbackForm()
         return render(request, 'feedback.html', {'form': form})
 
 
@@ -101,38 +94,34 @@ def contacts(request):
 
 def checkout(request, id_, days_):
     if request.method == 'POST':
-        form = checkout_form(request.POST)
+        form = OrderForm(request.POST)
         if form.is_valid():
-            fname = form.cleaned_data['first_name']
-            sname = form.cleaned_data['second_name']
-            phone = form.cleaned_data['phone']
-            email = form.cleaned_data['email']
-            street = form.cleaned_data['street']
-            house = form.cleaned_data['house']
-            housing = form.cleaned_data['housing']
-            building = form.cleaned_data['building']
-            entrance = form.cleaned_data['entrance']
-            floor = form.cleaned_data['floor']
-            room = form.cleaned_data['room']
+            product_ = SetModel.objects.get(pk=id_)
+            price_ = product_.calculate_price_for(int(days_))
 
-        
+            order = form.save(commit=False)
+            order.product_id = product_.id
+            order.price = price_
+            order.duration = days_
+
+            order.save()
             return HttpResponseRedirect('thanks' + str(id_) + str(days_))
 
     else:
-        form = checkout_form()
-        set_ = set.objects.get(pk=id_)
+        form = OrderForm()
+        set_ = SetModel.objects.get(pk=id_)
         price_ = set_.calculate_price_for(int(days_))
         return render(request, 'order.html', {'form': form, 'id': id_, 'days': days_, 'set': set_, 'price': price_})
 
 
 def backend_orders(request):
-    orders = order.objects.all()
+    orders = OrderModel.objects.all()
     return render(request, 'backend_orders.html', {'orders': orders})
 
 
 def thanks(request, id_=-1, days_=-1):
     if id_ != -1:
-        set_ = set.objects.get(pk=id_)
+        set_ = SetModel.objects.get(pk=id_)
         return render(request, 'thanks.html', {'set': set_, 'days': days_})
     else:
         return render(request, 'thanks_feedback.html')

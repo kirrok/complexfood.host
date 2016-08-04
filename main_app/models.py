@@ -1,3 +1,4 @@
+# coding=utf-8
 from __future__ import unicode_literals
 
 from django.db import models
@@ -5,25 +6,38 @@ from django.db import models
 
 # Create your models here.
 
-class order(models.Model):
-    first_name = models.CharField(null=True, blank=True, max_length=50, default='somename')
-    second_name = models.CharField(blank=True, null=True, max_length=50, default='somesecondname')
-    phone = models.CharField(blank=True, null=True, max_length=20, default='somephonenu')
-    email = models.EmailField(blank=True, null=True, default='example@email.com')
-    street = models.CharField(blank=True, null=True, max_length=60, default='somestreet')
-    house = models.IntegerField(blank=True, null=True, default='0')
-    housing = models.IntegerField(blank=True, null=True, default='0')
-    building = models.IntegerField(blank=True, null=True, default='0')
-    entrance = models.IntegerField(blank=True, null=True, default='0')
-    floor = models.IntegerField(blank=True, null=True, default='0')
-    room = models.CharField(blank=True, max_length=4, null=True, default='someroo,')
+class OrderModel(models.Model):
+    first_name = models.CharField(max_length=50, verbose_name='Имя*')
+    second_name = models.CharField(max_length=50, verbose_name='Фамилия*')
+    phone = models.CharField(max_length=20, verbose_name='Телефон*')
+    email = models.EmailField(verbose_name='Email*')
+    street = models.CharField(max_length=60, verbose_name='Улица*')
+    house = models.IntegerField(verbose_name='Дом*')
+    housing = models.IntegerField(blank=True, null=True, verbose_name='Корпус')
+    building = models.IntegerField(blank=True, null=True, verbose_name='Строение')
+    entrance = models.IntegerField(verbose_name='Подъезд*')
+    floor = models.IntegerField(verbose_name='Этаж*')
+    room = models.IntegerField(verbose_name='Квартира/офис*')
 
-    def summary(self):
-        sum = self.first_name + ' ' + self.second_name
-        return str(7777)
+    product_id = models.IntegerField(default=-1)
+    duration = models.IntegerField(default=-1)
+    price = models.IntegerField(default=-1)
+
+    def __unicode__(self):
+        sum = self.first_name + ' ' + self.second_name + ' ' + self.phone + ' ' + self.email + ' ' + self.street \
+              + ' ' + str(self.house)
+        if self.housing:
+            sum += ' ' + str(self.housing)
+        if self.building:
+            sum += ' ' + str(self.building)
+
+        sum += ' ' + str(self.entrance) + ' ' + str(self.floor) + ' ' + str(self.room) + 'Набор ' + \
+               str(self.product_id) + ' ' + 'Количество дней' + str(self.duration) + 'Цена ' + str(self.price)
+
+        return sum
 
 
-class set(models.Model):
+class SetModel(models.Model):
     kind = models.CharField(max_length=20)
     calories = models.IntegerField()
     protein = models.IntegerField()
@@ -40,11 +54,12 @@ class set(models.Model):
         CALORIE_IN_FAT = 9
         CALORIE_IN_PROTEIN = 4
         CALORIE_IN_CARBOHYDRATES = 4
-        return self.protein * CALORIE_IN_PROTEIN + self.fat * CALORIE_IN_FAT + self.carbohydrates * CALORIE_IN_CARBOHYDRATES
+        return int(self.protein) * CALORIE_IN_PROTEIN + int(self.fat) * CALORIE_IN_FAT + \
+               int(self.carbohydrates) * CALORIE_IN_CARBOHYDRATES
 
     def calculate_price_for(self, day_number):
         if day_number == 1:
-            price = self.price + 200
+            price = int(self.price) + 200
         else:
             price = (day_number * self.price) * (100 - day_number * 3) / 100
         ostatok = price % 100
@@ -63,7 +78,7 @@ class set(models.Model):
         return self.calculate_price_for(7) / 7 + 100 - self.calculate_price_for(7) / 7 % 100
 
 
-class ration(models.Model):
+class RationModel(models.Model):
     day = models.IntegerField()
     protein = models.CharField(blank=True, max_length=150)
     carbohydrates = models.CharField(blank=True, max_length=100)
@@ -73,4 +88,4 @@ class ration(models.Model):
     ccal = models.IntegerField()
     gcal = models.IntegerField()
     ocal = models.IntegerField()
-    set = models.ForeignKey(set, null=True)
+    set = models.ForeignKey(SetModel, null=True, related_name='ration')

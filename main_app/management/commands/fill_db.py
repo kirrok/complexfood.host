@@ -27,9 +27,10 @@ def fill_set(number):
                                   'and maintain / muscle set for girls.'
             third_description_ = 'Some additions description and services... This description can be very long'
 
-            set_ = set(kind=kind_, calories=calories_, protein=protein_, fat=fat_, carbohydrates=carbohydrates_, \
-                       price=price_, image=image_, first_description_woman=first_description_woman_, \
-                       first_description_man=first_description_man_, second_description=second_description_, third_description=third_description_)
+            set_ = SetModel(kind=kind_, calories=calories_, protein=protein_, fat=fat_, carbohydrates=carbohydrates_, \
+                            price=price_, image=image_, first_description_woman=first_description_woman_, \
+                            first_description_man=first_description_man_, second_description=second_description_,
+                            third_description=third_description_)
             set_.save()
 
             calories_ += 500
@@ -46,13 +47,12 @@ def fill_set(number):
                     gcal_ = randint(700, 1400)
                     ocal_ = randint(700, 1400)
 
-                    ration_ = ration(day=day_, protein=protein_, carbohydrates=carbohydrates_, greens=greens_, \
-                                     other=other_, pcal=pcal_, ccal=ccal_, gcal=gcal_, ocal=ocal_)
+                    ration_ = RationModel(day=day_, protein=protein_, carbohydrates=carbohydrates_, greens=greens_, \
+                                          other=other_, pcal=pcal_, ccal=ccal_, gcal=gcal_, ocal=ocal_)
                     ration_.save()
-                    set_.ration_set.add(ration_)
+                    set_.ration.add(ration_)
                 except Exception as e:
                     print(e)
-
 
         except Exception as e:
             print(e)

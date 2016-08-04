@@ -83,13 +83,13 @@
 
         </div>
     </div>
-    <button type="button" class="collapse-menu-btn" data-toggle="collapse" data-target="#ration">
+    <button type="button" class="collapse-menu-btn" data-toggle="collapse" data-target="#RationModel">
         Рацион  <span style="padding-top:3px;" class="glyphicon glyphicon-chevron-down"></span>
     </button>
 
-    <div id="ration" class="collapse">
+    <div id="RationModel" class="collapse">
             {% for day_ration in ration %}
-            {% include "day_ration.html" %}
+                {% include "day_ration.html" %}
             {% endfor %}
     </div>
 </div>
