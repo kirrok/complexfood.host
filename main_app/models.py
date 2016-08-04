@@ -50,6 +50,9 @@ class SetModel(models.Model):
     second_description = models.TextField(blank=True, max_length=400)
     third_description = models.TextField(blank=True, max_length=2000)
 
+    def __unicode__(self):
+        return self.kind + ' ' + str(self.calories) + ' ' + str(self.price)
+
     def count_calorie(self):
         CALORIE_IN_FAT = 9
         CALORIE_IN_PROTEIN = 4
@@ -89,3 +92,18 @@ class RationModel(models.Model):
     gcal = models.IntegerField()
     ocal = models.IntegerField()
     set = models.ForeignKey(SetModel, null=True, related_name='ration')
+
+    def __unicode__(self):
+        return 'для набора ' + str(self.set.id) + '; день ' + str(self.day)
+
+
+class FeedbackModel(models.Model):
+    first_name = models.CharField(verbose_name='Имя*', max_length=30)
+    email = models.EmailField(verbose_name='Email*')
+    topic = models.CharField(verbose_name='Тема', max_length=100, blank=True)
+    letter = models.CharField(verbose_name='Сообщение*', max_length=3000)
+
+    def __unicode__(self):
+        header = self.first_name + ' ' + self.email + ' ' + self.topic
+        letter_ = self.letter
+        return header + '      ' + letter_

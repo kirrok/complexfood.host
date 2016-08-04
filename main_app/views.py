@@ -34,11 +34,11 @@ class OrderForm(forms.ModelForm):
             x += 1
 
 
-class FeedbackForm(forms.Form):
-    first_name = forms.CharField(label='Имя*', max_length=100)
-    email = forms.EmailField(label='Email*', max_length=50)
-    topic = forms.CharField(required=False, label='Тема', max_length=100)
-    letter = forms.CharField(widget=forms.Textarea, label='Сообщение*')
+class FeedbackForm(forms.ModelForm):
+    class Meta:
+        model = FeedbackModel
+        fields = '__all__'
+        widgets = {'letter': forms.widgets.Textarea}
 
     def __init__(self, *args, **kwargs):
         super(FeedbackForm, self).__init__(*args, **kwargs)
@@ -61,8 +61,8 @@ def menu(request):
     return render(request, 'menu.html', {'sets': sets_})
 
 
-def set_info(request, id):
-    set_ = SetModel.objects.get(pk=id)
+def set_info(request, id_):
+    set_ = SetModel.objects.get(pk=id_)
     ration_ = set_.ration.all()
     return render(request, 'set_info.html', {'set': set_, 'ration': ration_})
 
@@ -79,6 +79,7 @@ def feedback(request):
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
         if form.is_valid():
+            form.save()
             return HttpResponseRedirect('thanks_feedback')
 
     else:
