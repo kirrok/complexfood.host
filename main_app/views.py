@@ -49,6 +49,7 @@ class FeedbackForm(forms.ModelForm):
 
 
 def index(request):
+    request.session["x"]=True
     return render(request, 'index.html')
 
 
