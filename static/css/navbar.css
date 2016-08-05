@@ -278,3 +278,24 @@ margin-right: auto;
     font-size:25px;
     font-family: Bodoni;
 }
+
+.glyphicon-ok {
+    color: green;
+}
+.learn-more h2 {
+    color:#0C8312;
+    font-weight: 600;
+}
+.learn-more h1 {
+    color: rgb(140, 198, 63);
+    font-weight: 300;
+    line-height: 40px;
+    text-transform: uppercase;
+}
+.gray-background {
+    background-color:rgb(222, 226, 229);
+    width:100;
+}
+.learn_more img {
+    width: 100px;
+}
