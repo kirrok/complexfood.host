@@ -1,2 +1,6 @@
 User-agent: *
+Disallow: /main_app/
+Disallow: /static/
+Disallow: /reloadbase
 Disallow: /
+Disallow: /complexfood/
