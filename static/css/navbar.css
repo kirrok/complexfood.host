@@ -299,3 +299,9 @@ margin-right: auto;
 .learn_more img {
     width: 100px;
 }
+
+.learn-more h4 {
+    text-transform: uppercase;
+    color:black;
+    font-weight: 600;
+}
