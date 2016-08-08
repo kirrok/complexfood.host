@@ -16,5 +16,5 @@ urlpatterns = [
     url(r'^thanks(\d{1})(\d{1})$', views.thanks, name='thanks'),
     url(r'^thanks_feedback$', views.thanks, name='thanks_feedback'),
     url(r'^backend_orders$', views.backend_orders, name='backend_orders'),
-
+    url(r'^pfc$', views.pfc, name='pfc'),
 ]

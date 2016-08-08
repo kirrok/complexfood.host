@@ -4,6 +4,27 @@ from django.http import HttpResponse
 from main_app.models import *
 from django.http import HttpResponseRedirect
 from django import forms
+import math
+
+class PFCForm(forms.Form):
+    SEX_CHOISES = (('w', 'woman'), ('m', 'man'))
+    ACTIVITY_CHOISES = (
+        ('1', 'раз в неделю'),
+        ('2', 'два раза в неделю'),
+        ('3', 'три раза в неделю')
+    )
+    sex = forms.ChoiceField(label='Пол', widget=forms.RadioSelect, choices=SEX_CHOISES)
+    age = forms.IntegerField(label='Возраст', min_value=10, max_value=100)
+    weight = forms.IntegerField(label='Вес', widget=forms.TextInput)
+    height = forms.IntegerField(label='Рост', widget=forms.TextInput)
+    waist = forms.IntegerField(label='Обьем талии', widget=forms.TextInput)
+    activity_level = forms.ChoiceField(label='Уровень активности', choices=ACTIVITY_CHOISES)
+    desired_weight = forms.IntegerField(label='Желаемый вес', widget=forms.TextInput)
+
+    def __init__(self, *args, **kwargs):
+        super(PFCForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({'required': ""})
 
 
 class OrderForm(forms.ModelForm):
@@ -46,6 +67,51 @@ class FeedbackForm(forms.ModelForm):
         self.fields['email'].widget.attrs.update({'class': 'data-input', 'required': ""})
         self.fields['topic'].widget.attrs.update({'class': 'data-input'})
         self.fields['letter'].widget.attrs.update({'class': 'text_area', 'required': ""})
+
+
+def calculate_pfc(sex, age, weight, height, waist, activity_level, desired_weight):
+    if sex == 'm':
+        fat_percent = (4.15 * waist - 0.082 * weight - 98.42) / weight
+    else:
+        fat_percent = (4.15 * waist - 0.082 * weight - 76.76) / weight
+
+    lbm = weight * (100 - fat_percent)/100
+    passive_metabolism = 370 + 21.6 * lbm
+
+    if activity_level == '1':
+        coefficient = 1.2
+    elif activity_level == '2':
+        coefficient = 1.275
+    elif activity_level == '3':
+        coefficient = 1.55
+    elif activity_level == '4':
+        coefficient = 1.725
+    elif activity_level == '1.9':
+        coefficient = 1.9
+
+    activity_metabolism = passive_metabolism * coefficient
+
+    return math.trunc(activity_metabolism)
+
+
+def pfc(request):
+    if request.method == 'POST':
+        form = PFCForm(request.POST)
+        if form.is_valid():
+            sex = form.cleaned_data['sex']
+            age = form.cleaned_data['age']
+            weight = form.cleaned_data['weight']
+            height = form.cleaned_data['height']
+            waist = form.cleaned_data['waist']
+            activity_level = form.cleaned_data['activity_level']
+            desired_weight = form.cleaned_data['desired_weight']
+
+            calorific_value = calculate_pfc(sex, age, weight, height, waist, activity_level, desired_weight)
+            return render(request, 'PFC.html', {'result': calorific_value})
+
+    else:
+        form = PFCForm()
+        return render(request, 'PFC.html', {'form': form})
 
 
 def index(request):
