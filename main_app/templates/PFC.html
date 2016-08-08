@@ -1,31 +1,35 @@
 {% extends 'base.html' %}
 {% block main_content %}
 {% if result %}
-<h3 class="text-center">Ваша суточная каллорийность рациона {{result}} ккал. </h3>
-{% endif %}
+<h3 class="text-center">Необходиая вам суточная калорийность - {{result}} ккал. </h3>
+{% else %}
+<h3> Рассчитайте вашу суточную калорийность </h3>
+<hr>
 <form action="{% url 'pfc' %}" method="post" style="...">
     {% csrf_token %}
     {% for field in form %}
     <div class="row">
-        <div class="col-md-12 col-xs-12">
+        <div class="col-md-12 col-sm-12 col-xs-12">
             <p>{{ field.label }}</p>
-            <p>{{ field.errors }}</p>
-
         </div>
+
     </div>
     <div class="row">
-        <div class="col-md-9 col-xs-12">
+        <div class="col-md-2 col-xs-12">
             {{ field }}
+        </div>
+        <div class="col-md-8 col-sm-12 col-xs-12">
+            {{ field.errors }}
         </div>
     </div>
     {% endfor %}
-    <hr color="red" size="10">
+    <hr>
     <button type="submit" class="btn contacts-button">
         Рассчитать
     </button>
 
 </form>
-
+{% endif %}
 
 
 {% endblock main_content %}

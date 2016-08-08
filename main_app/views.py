@@ -9,9 +9,11 @@ import math
 class PFCForm(forms.Form):
     SEX_CHOISES = (('w', 'woman'), ('m', 'man'))
     ACTIVITY_CHOISES = (
-        ('1', 'раз в неделю'),
-        ('2', 'два раза в неделю'),
-        ('3', 'три раза в неделю')
+        ('1', 'Миниум физической активности'),
+        ('2', '1-3 тренировки в неделю'),
+        ('3', '3-5 тренировки в неделю'),
+        ('4', '6-7 тренировки в неделю'),
+        ('5', 'Несколько тренировок в день')
     )
     sex = forms.ChoiceField(label='Пол', widget=forms.RadioSelect, choices=SEX_CHOISES)
     age = forms.IntegerField(label='Возраст', min_value=10, max_value=100)
@@ -86,12 +88,18 @@ def calculate_pfc(sex, age, weight, height, waist, activity_level, desired_weigh
         coefficient = 1.55
     elif activity_level == '4':
         coefficient = 1.725
-    elif activity_level == '1.9':
+    else:
         coefficient = 1.9
 
     activity_metabolism = passive_metabolism * coefficient
+    REDUCE_COEFFICIENT = 0.93
+    GROWTH_COEFFICIENT = 1.07
+    if weight > desired_weight:
+        result = activity_metabolism * REDUCE_COEFFICIENT
+    else:
+        result = activity_metabolism * GROWTH_COEFFICIENT
 
-    return math.trunc(activity_metabolism)
+    return math.trunc(result)
 
 
 def pfc(request):
@@ -108,7 +116,8 @@ def pfc(request):
 
             calorific_value = calculate_pfc(sex, age, weight, height, waist, activity_level, desired_weight)
             return render(request, 'PFC.html', {'result': calorific_value})
-
+        else:
+            return render(request, 'PFC.html', {'form': form})
     else:
         form = PFCForm()
         return render(request, 'PFC.html', {'form': form})
