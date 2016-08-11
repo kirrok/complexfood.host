@@ -67,6 +67,9 @@ margin-right: auto;
 .food-header {
     border-bottom: solid 1px rgb(119, 188, 82)
 }
+.set-info {
+    width:100%;
+}
 
 .set-info .btn-default {
     border-color: rgb(140, 198, 63);
@@ -142,7 +145,6 @@ margin-right: auto;
 }
 .compressed {
     padding-top:25px;
-    align: center;
 }
 
 
@@ -304,4 +306,14 @@ margin-right: auto;
     text-transform: uppercase;
     color:black;
     font-weight: 600;
+}
+
+li {
+    font-size:18px;
+    list-style:none;
+}
+.image-li {
+    height:14px;
+    width: 14px;
+    margin-right:15px;
 }

@@ -2,13 +2,16 @@
 <!-- MAIN CONTENT -->
 {% block main_content %}
 
-<div class="container compressed-content">
-    <p class="title text-uppercase">программы питания</p>
-    {% for set in sets %}
-    {% include "set_template.html" %}
-    {% endfor %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-1 col-sm-1 hidden-xs"></div>
+        <div class="col-md-10 col-sm-10"><p class="title text-uppercase">программы питания</p>
+            {% for set in sets %}
+            {% include "set_template.html" %}
+            {% endfor %}
+        </div>
+    </div>
 </div>
-
 {% endblock main_content %}
 
 
