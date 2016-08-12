@@ -6,11 +6,11 @@ body {
 .lower-cap {
     margin-top: 20px;
     min-height:200px;
-    background-color: #0C8312;
     color: #fff ;
     font-size: 25px;
     width:100%;
     padding: 0 0 0 0;
+    background-image: url("/images/background_bottom_base.png");
 }
 #main-content {
     min-height: 600px;
